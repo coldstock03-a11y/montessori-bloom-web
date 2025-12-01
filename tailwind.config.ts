@@ -13,12 +13,23 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'quicksand': ['Quicksand', 'sans-serif'],
+        'nunito': ['Nunito', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        /* Colores Montessori personalizados */
+        'beige-pastel': "hsl(var(--beige-pastel))",
+        'salmon-pastel': "hsl(var(--salmon-pastel))",
+        'sky-pastel': "hsl(var(--sky-pastel))",
+        'neutral-light': "hsl(var(--neutral-light))",
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
