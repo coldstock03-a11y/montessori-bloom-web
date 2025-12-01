@@ -48,6 +48,26 @@ const Index = () => {
     visible: { opacity: 1, y: 0 }
   };
 
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 }
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 }
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 }
+  };
+
+  const rotateIn = {
+    hidden: { opacity: 0, rotate: -10, scale: 0.9 },
+    visible: { opacity: 1, rotate: 0, scale: 1 }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header con menú fijo */}
@@ -57,7 +77,9 @@ const Index = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="font-quicksand font-bold text-xl md:text-2xl text-primary"
+              transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+              whileHover={{ scale: 1.05 }}
+              className="font-quicksand font-bold text-xl md:text-2xl text-sky-pastel cursor-pointer"
             >
               Casa Montessori Manrique
             </motion.div>
@@ -165,13 +187,24 @@ const Index = () => {
         className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
       >
         {/* Arcoíris de fondo */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none"
+          animate={{ 
+            y: [0, -10, 0],
+            rotate: [0, 1, 0, -1, 0] 
+          }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+        >
           <img
             src={rainbowClouds}
             alt=""
             className="w-full max-w-4xl h-auto object-contain"
           />
-        </div>
+        </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -181,25 +214,53 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="font-quicksand font-bold text-4xl md:text-6xl lg:text-7xl text-primary mb-6">
+            <motion.h1 
+              className="font-quicksand font-bold text-4xl md:text-6xl lg:text-7xl text-sky-pastel mb-6"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 80 }}
+            >
               Casa Montessori Manrique
-            </h1>
-            <p className="font-nunito text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-6">
+            </motion.h1>
+            <motion.p 
+              className="font-nunito text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
               A home filled with love, learning, and creativity
-            </p>
-            <div className="flex items-center justify-center gap-2 text-foreground/70 mb-8">
-              <MapPin className="text-primary" size={24} />
+            </motion.p>
+            <motion.div 
+              className="flex items-center justify-center gap-2 text-foreground/70 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <MapPin className="text-salmon-pastel" size={24} />
+              </motion.div>
               <span className="font-nunito text-lg md:text-xl">
                 Newmarket, Ontario, Canadá
               </span>
-            </div>
-            <Button
-              onClick={() => scrollToSection("agendar-cita")}
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg shadow-2xl hover:shadow-primary/50 hover:scale-105 transition-all"
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
+              whileTap={{ scale: 0.95 }}
             >
-              Schedule an appointment
-            </Button>
+              <Button
+                onClick={() => scrollToSection("agendar-cita")}
+                size="lg"
+                className="bg-sky-pastel hover:bg-sky-pastel/90 text-foreground rounded-full px-8 py-6 text-lg shadow-2xl hover:shadow-salmon-pastel/50 transition-all"
+              >
+                Schedule an appointment
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -207,32 +268,59 @@ const Index = () => {
       {/* Where We Grow */}
       <section id="nuestro-hogar" className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 0.8 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div>
-              <h2 className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-primary mb-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInLeft}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.h2 
+                className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-6"
+                whileHover={{ x: 10 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 Where We Grow
-              </h2>
-              <p className="font-nunito text-lg md:text-xl text-foreground/80 leading-relaxed">
+              </motion.h2>
+              <motion.p 
+                className="font-nunito text-lg md:text-xl text-foreground/80 leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
                 At Casa Montessori Manrique, we open the doors of our home to provide a warm, safe, and loving space where children can explore, play, and grow with confidence. Our Montessori approach respects each child's natural curiosity and development, creating an environment where learning happens joyfully and naturally every day.
-              </p>
-            </div>
-            <div className="rounded-3xl overflow-hidden shadow-2xl">
+              </motion.p>
+            </motion.div>
+            <motion.div 
+              className="rounded-3xl overflow-hidden shadow-2xl"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={scaleIn}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              whileHover={{ scale: 1.05, rotate: 2 }}
+            >
               {/* Esta imagen se importará desde imagenes/imagen1.jpg */}
               {/* El usuario agregará la imagen después */}
-              <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              <motion.div 
+                className="aspect-video bg-gradient-to-br from-sky-pastel/40 to-salmon-pastel/40 flex items-center justify-center"
+                animate={{ 
+                  backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"]
+                }}
+                transition={{ 
+                  duration: 10, 
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
                 <p className="font-nunito text-muted-foreground">
                   [Importar: imagenes/imagen1.jpg]
                 </p>
-              </div>
-            </div>
-          </motion.div>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -243,16 +331,25 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={scaleIn}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-primary mb-4">
+            <motion.h2 
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-4"
+              whileHover={{ scale: 1.05 }}
+            >
               How We Bloom
-            </h2>
-            <p className="font-nunito text-lg text-foreground/70 max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p 
+              className="font-nunito text-lg text-foreground/70 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
               Our daily activities nurture every aspect of your child's development
-            </p>
+            </motion.p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -283,16 +380,38 @@ const Index = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2"
+                variants={rotateIn}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.15,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{ 
+                  scale: 1.08, 
+                  rotate: [0, -3, 3, 0],
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer"
               >
-                <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                  <item.icon className="text-primary" size={32} />
-                </div>
-                <h3 className="font-quicksand font-bold text-xl md:text-2xl text-primary mb-4 text-center">
+                <motion.div 
+                  className="bg-sky-pastel/20 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto"
+                  whileHover={{ 
+                    scale: 1.2, 
+                    rotate: 360,
+                    backgroundColor: "hsl(var(--salmon-pastel) / 0.3)"
+                  }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <item.icon className="text-sky-pastel" size={32} />
+                </motion.div>
+                <motion.h3 
+                  className="font-quicksand font-bold text-xl md:text-2xl text-sky-pastel mb-4 text-center"
+                  whileHover={{ scale: 1.05 }}
+                >
                   {item.title}
-                </h3>
+                </motion.h3>
                 <p className="font-nunito text-foreground/70 text-center leading-relaxed">
                   {item.description}
                 </p>
@@ -313,14 +432,34 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <h2 className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-primary mb-8 text-center">
+            <motion.h2 
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-8 text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+            >
               About us
-            </h2>
-            <div className="bg-card rounded-3xl p-8 md:p-12 shadow-2xl">
-              <p className="font-nunito text-lg md:text-xl text-foreground/80 leading-relaxed">
+            </motion.h2>
+            <motion.div 
+              className="bg-card rounded-3xl p-8 md:p-12 shadow-2xl"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+            >
+              <motion.p 
+                className="font-nunito text-lg md:text-xl text-foreground/80 leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 1 }}
+              >
                 We are a daycare where every child receives love, patience, and personalized attention in a home-like environment. Our licensed Montessori approach celebrates each child's unique journey, fostering independence, creativity, and a genuine love for learning. With small group sizes and experienced, caring educators, we create a nurturing space where children feel valued, safe, and excited to explore the world around them.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -332,13 +471,17 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={scaleIn}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-primary mb-4">
+            <motion.h2 
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-4"
+              whileHover={{ scale: 1.1, rotate: [0, 2, -2, 0] }}
+              transition={{ duration: 0.5 }}
+            >
               Let's connect!
-            </h2>
+            </motion.h2>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -346,12 +489,22 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={fadeInUp}
+              variants={scaleIn}
               transition={{ duration: 0.6 }}
-              className="bg-secondary rounded-2xl p-6 text-center shadow-lg"
+              whileHover={{ 
+                scale: 1.1, 
+                rotate: 5,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
+              }}
+              className="bg-secondary rounded-2xl p-6 text-center shadow-lg cursor-pointer"
             >
-              <MapPin className="text-primary mx-auto mb-4" size={40} />
-              <h3 className="font-quicksand font-bold text-lg text-primary mb-2">
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <MapPin className="text-salmon-pastel mx-auto mb-4" size={40} />
+              </motion.div>
+              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
                 Ubicación
               </h3>
               <p className="font-nunito text-foreground/70">
@@ -363,12 +516,22 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={fadeInUp}
+              variants={scaleIn}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-secondary rounded-2xl p-6 text-center shadow-lg"
+              whileHover={{ 
+                scale: 1.1, 
+                rotate: -5,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
+              }}
+              className="bg-secondary rounded-2xl p-6 text-center shadow-lg cursor-pointer"
             >
-              <Phone className="text-primary mx-auto mb-4" size={40} />
-              <h3 className="font-quicksand font-bold text-lg text-primary mb-2">
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Phone className="text-salmon-pastel mx-auto mb-4" size={40} />
+              </motion.div>
+              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
                 Teléfono
               </h3>
               <p className="font-nunito text-foreground/70">
@@ -380,12 +543,22 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={fadeInUp}
+              variants={scaleIn}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-secondary rounded-2xl p-6 text-center shadow-lg"
+              whileHover={{ 
+                scale: 1.1, 
+                rotate: 5,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
+              }}
+              className="bg-secondary rounded-2xl p-6 text-center shadow-lg cursor-pointer"
             >
-              <Mail className="text-primary mx-auto mb-4" size={40} />
-              <h3 className="font-quicksand font-bold text-lg text-primary mb-2">
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Mail className="text-salmon-pastel mx-auto mb-4" size={40} />
+              </motion.div>
+              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
                 Email
               </h3>
               <p className="font-nunito text-foreground/70">
@@ -397,12 +570,22 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={fadeInUp}
+              variants={scaleIn}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-secondary rounded-2xl p-6 text-center shadow-lg"
+              whileHover={{ 
+                scale: 1.1, 
+                rotate: -5,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
+              }}
+              className="bg-secondary rounded-2xl p-6 text-center shadow-lg cursor-pointer"
             >
-              <Clock className="text-primary mx-auto mb-4" size={40} />
-              <h3 className="font-quicksand font-bold text-lg text-primary mb-2">
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <Clock className="text-salmon-pastel mx-auto mb-4" size={40} />
+              </motion.div>
+              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
                 Horario
               </h3>
               <p className="font-nunito text-foreground/70">
@@ -420,16 +603,28 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={scaleIn}
             transition={{ duration: 0.8 }}
             className="max-w-2xl mx-auto"
           >
-            <h2 className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-primary mb-8 text-center">
+            <motion.h2 
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-8 text-center"
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+            >
               Schedule an appointment
-            </h2>
-            <form
+            </motion.h2>
+            <motion.form
               onSubmit={handleSubmit}
               className="bg-card rounded-3xl p-8 md:p-12 shadow-2xl space-y-6"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              whileHover={{ boxShadow: "0 30px 60px -15px rgba(0,0,0,0.3)" }}
             >
               <div>
                 <label
@@ -490,50 +685,76 @@ const Index = () => {
                 />
               </div>
 
-              <Button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Send message
-              </Button>
-            </form>
+                <Button
+                  type="submit"
+                  className="w-full bg-sky-pastel hover:bg-sky-pastel/90 text-foreground rounded-full py-6 text-lg shadow-lg hover:shadow-xl transition-all"
+                >
+                  Send message
+                </Button>
+              </motion.div>
+            </motion.form>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-12">
+      <footer className="bg-sky-pastel text-foreground py-12">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-center md:text-left">
-              <p className="font-nunito text-lg">
+          <motion.div 
+            className="flex flex-col md:flex-row justify-between items-center gap-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div 
+              className="text-center md:text-left"
+              whileHover={{ x: 5 }}
+            >
+              <p className="font-nunito text-lg font-semibold">
                 © 2025 Casa Montessori Manrique
               </p>
               <p className="font-nunito text-sm opacity-80 mt-1">
                 Licensed daycare in Newmarket, Ontario
               </p>
-            </div>
+            </motion.div>
             <div className="flex gap-6">
-              <a
+              <motion.a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:scale-110 transition-transform"
+                className="transition-all"
                 aria-label="Instagram"
+                whileHover={{ 
+                  scale: 1.3, 
+                  rotate: 360,
+                  color: "hsl(var(--salmon-pastel))"
+                }}
+                transition={{ duration: 0.5 }}
               >
                 <Instagram size={28} />
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:scale-110 transition-transform"
+                className="transition-all"
                 aria-label="Facebook"
+                whileHover={{ 
+                  scale: 1.3, 
+                  rotate: -360,
+                  color: "hsl(var(--salmon-pastel))"
+                }}
+                transition={{ duration: 0.5 }}
               >
                 <Facebook size={28} />
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </footer>
     </div>

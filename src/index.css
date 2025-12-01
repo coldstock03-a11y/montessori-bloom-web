@@ -12,18 +12,18 @@ All colors MUST be HSL.
 */
 @layer base {
   :root {
-    /* Color principal - Celeste pastel #A7D8DE */
-    --primary: 185 40% 76%;
-    --primary-foreground: 0 0% 100%;
+    /* Color principal - Celeste muy claro #f6fdfe */
+    --primary: 186 100% 99%;
+    --primary-foreground: 0 0% 30%;
     
     /* Colores secundarios Montessori */
     --beige-pastel: 35 100% 91%;    /* #FFEDD6 */
     --salmon-pastel: 25 78% 80%;    /* #F4C7A3 */
-    --sky-pastel: 185 40% 76%;      /* #A7D8DE - celeste */
-    --neutral-light: 0 0% 97%;      /* #F7F7F7 */
+    --sky-pastel: 185 50% 85%;      /* celeste intermedio */
+    --neutral-light: 186 80% 98%;   /* #F7FDFE - muy claro */
     
     /* Sistema de diseño basado en colores Montessori */
-    --background: 0 0% 100%;
+    --background: 186 100% 99%;     /* fondo principal con tono celeste */
     --foreground: 0 0% 30%;         /* #4C4C4C - texto principal */
 
     --card: 0 0% 100%;
@@ -44,9 +44,9 @@ All colors MUST be HSL.
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 185 30% 90%;
-    --input: 185 30% 90%;
-    --ring: 185 40% 76%;
+    --border: 185 40% 85%;
+    --input: 186 60% 96%;
+    --ring: 185 50% 85%;
 
     --radius: 1rem;
 
