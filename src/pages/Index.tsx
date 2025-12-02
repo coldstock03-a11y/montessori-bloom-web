@@ -18,6 +18,7 @@ import {
   Facebook
 } from "lucide-react";
 import rainbowClouds from "@/assets/rainbow-clouds.png";
+import imagen1 from "@/assets/imagen1.jpg"; // 👈 importa la imagen
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -88,31 +89,31 @@ const Index = () => {
             <div className="hidden md:flex items-center gap-6">
               <button
                 onClick={() => scrollToSection("inicio")}
-                className="text-foreground hover:text-primary transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
               >
                 Home
               </button>
               <button
                 onClick={() => scrollToSection("nuestro-hogar")}
-                className="text-foreground hover:text-primary transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
               >
                 Where We Grow
               </button>
               <button
                 onClick={() => scrollToSection("como-funciona")}
-                className="text-foreground hover:text-primary transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
               >
                 How We Bloom
               </button>
               <button
                 onClick={() => scrollToSection("por-que-elegirnos")}
-                className="text-foreground hover:text-primary transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
               >
                 About us
               </button>
               <button
                 onClick={() => scrollToSection("contacto")}
-                className="text-foreground hover:text-primary transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
               >
                 Let's Connect!
               </button>
@@ -315,9 +316,11 @@ const Index = () => {
                   ease: "linear"
                 }}
               >
-                <p className="font-nunito text-muted-foreground">
-                  [Importar: imagenes/imagen1.jpg]
-                </p>
+                <img 
+                  src={imagen1} 
+                  alt="Imagen 1"
+                  className="w-full h-full object-cover"
+                />
               </motion.div>
             </motion.div>
           </div>
