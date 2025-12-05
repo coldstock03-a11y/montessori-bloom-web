@@ -72,7 +72,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header con menú fijo */}
-      <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm shadow-sm z-50 border-b border-primary/20">
+      <header className="fixed top-0 left-0 right-0 bg-sky-pastel backdrop-blur-sm shadow-sm z-50 border-b border-primary/20">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <motion.div
@@ -80,40 +80,40 @@ const Index = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
               whileHover={{ scale: 1.05 }}
-              className="font-quicksand font-bold text-xl md:text-2xl text-sky-pastel cursor-pointer"
+              className="font-quicksand font-bold text-xl md:text-2xl text-foreground cursor-pointer"
             >
-              Casa Montessori Manriquesssss
+              Casa Montessori Manrique
             </motion.div>
 
             {/* Menú desktop */}
             <div className="hidden md:flex items-center gap-6">
               <button
                 onClick={() => scrollToSection("inicio")}
-                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-rose-400 transition-colors font-nunito font-medium"
               >
                 Home
               </button>
               <button
                 onClick={() => scrollToSection("nuestro-hogar")}
-                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-rose-400 transition-colors font-nunito font-medium"
               >
                 Where We Grow
               </button>
               <button
                 onClick={() => scrollToSection("como-funciona")}
-                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-rose-400 transition-colors font-nunito font-medium"
               >
                 How We Bloom
               </button>
               <button
                 onClick={() => scrollToSection("por-que-elegirnos")}
-                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-rose-400 transition-colors font-nunito font-medium"
               >
                 About us
               </button>
               <button
                 onClick={() => scrollToSection("contacto")}
-                className="text-foreground hover:text-sky-pastel transition-colors font-nunito font-medium"
+                className="text-foreground hover:text-rose-400 transition-colors font-nunito font-medium"
               >
                 Let's Connect!
               </button>
@@ -128,7 +128,7 @@ const Index = () => {
             {/* Botón hamburguesa móvil */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-primary"
+              className="md:hidden text-secundary"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -137,7 +137,7 @@ const Index = () => {
           {/* Menú móvil */}
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               className="md:hidden mt-4 pb-4 space-y-3"
             >
@@ -216,7 +216,7 @@ const Index = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <motion.h1 
-              className="font-quicksand font-bold text-4xl md:text-6xl lg:text-7xl text-sky-pastel mb-6"
+              className="font-quicksand font-bold text-4xl md:text-6xl lg:text-7xl text-cyan-500 mb-6"
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 80 }}
@@ -278,7 +278,7 @@ const Index = () => {
               transition={{ duration: 0.8 }}
             >
               <motion.h2 
-                className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-6"
+                className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-cyan-500 mb-6"
                 whileHover={{ x: 10 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -291,7 +291,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                At Casa Montessori Manrique, we open the doors of our home to provide a warm, safe, and loving space where children can explore, play, and grow with confidence. Our Montessori approach respects each child's natural curiosity and development, creating an environment where learning happens joyfully and naturally every day.
+                At Casa Montessori Manrique, we open the doors of our home to provide a warm, safe, and loving space. Here, curiosity flourishes and diversity is celebrated. Every corner is designed to make children feel at home.
               </motion.p>
             </motion.div>
             <motion.div 
@@ -339,7 +339,7 @@ const Index = () => {
             className="text-center mb-16"
           >
             <motion.h2 
-              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-4"
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-cyan-500 mb-4"
               whileHover={{ scale: 1.05 }}
             >
               How We Bloom
@@ -360,22 +360,22 @@ const Index = () => {
               {
                 icon: Heart,
                 title: "Play and Learn",
-                description: "Hands-on activities that spark imagination and build skills through joyful discovery"
+                description: "Children learn through play. We encourage imagination with artistic activities, music and reading."
               },
               {
                 icon: Trees,
                 title: "Nature",
-                description: "Outdoor exploration connecting children with the natural world around them"
+                description: "We love getting outdoors and connecting with nature."
               },
               {
                 icon: Calendar,
                 title: "Special dates",
-                description: "Celebrating traditions and creating meaningful memories together"
+                description: "At Casa Montessori Manrique, we value birthdays and cultural celebrations as moments to cultivate respect, gratitude, and a sense of belonging."
               },
               {
                 icon: Sparkles,
                 title: "Habits",
-                description: "Building independence, responsibility, and positive daily routines"
+                description: "We promote healthy routines, respect, order and responsibility from a young age."
               }
             ].map((item, index) => (
               <motion.div
@@ -410,7 +410,7 @@ const Index = () => {
                   <item.icon className="text-sky-pastel" size={32} />
                 </motion.div>
                 <motion.h3 
-                  className="font-quicksand font-bold text-xl md:text-2xl text-sky-pastel mb-4 text-center"
+                  className="font-quicksand font-bold text-xl md:text-2xl text-cyan-500 mb-4 text-center"
                   whileHover={{ scale: 1.05 }}
                 >
                   {item.title}
@@ -436,7 +436,7 @@ const Index = () => {
             className="max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-8 text-center"
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-cyan-500 mb-8 text-center"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -460,7 +460,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 1 }}
               >
-                We are a daycare where every child receives love, patience, and personalized attention in a home-like environment. Our licensed Montessori approach celebrates each child's unique journey, fostering independence, creativity, and a genuine love for learning. With small group sizes and experienced, caring educators, we create a nurturing space where children feel valued, safe, and excited to explore the world around them.
+                We are a daycare where every child receives love, patience, and personalized attention. We are licensed under the Canada Wide Feed Reduction Program and follow the Montessori approach to promote autonomy, respect, and a joy for learning.
               </motion.p>
             </motion.div>
           </motion.div>
@@ -479,7 +479,7 @@ const Index = () => {
             className="text-center mb-16"
           >
             <motion.h2 
-              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-4"
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-cyan-500 mb-4"
               whileHover={{ scale: 1.1, rotate: [0, 2, -2, 0] }}
               transition={{ duration: 0.5 }}
             >
@@ -507,8 +507,8 @@ const Index = () => {
               >
                 <MapPin className="text-salmon-pastel mx-auto mb-4" size={40} />
               </motion.div>
-              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
-                Ubicación
+              <h3 className="font-quicksand font-bold text-lg text-cyan-500 mb-2">
+                Location
               </h3>
               <p className="font-nunito text-foreground/70">
                 Newmarket, Ontario
@@ -534,11 +534,11 @@ const Index = () => {
               >
                 <Phone className="text-salmon-pastel mx-auto mb-4" size={40} />
               </motion.div>
-              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
-                Teléfono
+              <h3 className="font-quicksand font-bold text-lg text-cyan-500 mb-2">
+                Phone
               </h3>
               <p className="font-nunito text-foreground/70">
-                (123) 456-7890
+                (111) 111-1111
               </p>
             </motion.div>
 
@@ -561,7 +561,7 @@ const Index = () => {
               >
                 <Mail className="text-salmon-pastel mx-auto mb-4" size={40} />
               </motion.div>
-              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
+              <h3 className="font-quicksand font-bold text-lg text-cyan-500 mb-2">
                 Email
               </h3>
               <p className="font-nunito text-foreground/70">
@@ -588,11 +588,11 @@ const Index = () => {
               >
                 <Clock className="text-salmon-pastel mx-auto mb-4" size={40} />
               </motion.div>
-              <h3 className="font-quicksand font-bold text-lg text-sky-pastel mb-2">
-                Horario
+              <h3 className="font-quicksand font-bold text-lg text-cyan-500 mb-2">
+                Schedule
               </h3>
               <p className="font-nunito text-foreground/70">
-                Lunes - Viernes<br />7:00 AM - 6:00 PM
+                Monday - Friday<br />7:00 AM - 5:00 PM
               </p>
             </motion.div>
           </div>
@@ -611,7 +611,7 @@ const Index = () => {
             className="max-w-2xl mx-auto"
           >
             <motion.h2 
-              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-sky-pastel mb-8 text-center"
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-cyan-500 mb-8 text-center"
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -634,7 +634,7 @@ const Index = () => {
                   htmlFor="name"
                   className="block font-quicksand font-semibold text-foreground mb-2"
                 >
-                  Nombre
+                  Name
                 </label>
                 <Input
                   id="name"
@@ -645,7 +645,7 @@ const Index = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   className="w-full border-primary/30 focus:border-primary rounded-xl"
-                  placeholder="Tu nombre completo"
+                  placeholder="Your full name"
                 />
               </div>
 
@@ -665,7 +665,7 @@ const Index = () => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   className="w-full border-primary/30 focus:border-primary rounded-xl"
-                  placeholder="tu@email.com"
+                  placeholder="youremail@email.com"
                 />
               </div>
 
@@ -674,7 +674,7 @@ const Index = () => {
                   htmlFor="message"
                   className="block font-quicksand font-semibold text-foreground mb-2"
                 >
-                  Mensaje
+                  Message
                 </label>
                 <Textarea
                   id="message"
@@ -684,7 +684,7 @@ const Index = () => {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   className="w-full border-primary/30 focus:border-primary rounded-xl min-h-[150px]"
-                  placeholder="Cuéntanos sobre tu familia y tus necesidades..."
+                  placeholder="Tell us about your family and your needs..."
                 />
               </div>
 
@@ -727,7 +727,7 @@ const Index = () => {
             </motion.div>
             <div className="flex gap-6">
               <motion.a
-                href="https://instagram.com"
+                href="https://www.instagram.com/casamontessori2024?igsh=MXJ4Y3JrYjQ3bGpyNQ%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-all"
@@ -742,7 +742,7 @@ const Index = () => {
                 <Instagram size={28} />
               </motion.a>
               <motion.a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61562247833857"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-all"
