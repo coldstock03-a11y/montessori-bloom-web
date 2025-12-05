@@ -82,7 +82,7 @@ const Index = () => {
               whileHover={{ scale: 1.05 }}
               className="font-quicksand font-bold text-xl md:text-2xl text-sky-pastel cursor-pointer"
             >
-              Casa Montessori Manrique
+              Casa Montessori Manriquesssss
             </motion.div>
 
             {/* Menú desktop */}
