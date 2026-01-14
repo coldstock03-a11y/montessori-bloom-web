@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import rainbowClouds from "@/assets/rainbow-clouds.png";
 import imagen1 from "@/assets/imagen1.jpg"; // 👈 importa la imagen
+import emailjs from "emailjs-com";
+
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,15 +36,32 @@ const Index = () => {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
-  };
-
+  }; 
+ //Funcion para enviar el formulario de los correos, se debe crear la cuenta de emailjs y cambiar los id
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form handling logic would go here
-    console.log("Form submitted:", formData);
-    alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
-    setFormData({ name: "", email: "", message: "" });
+
+    emailjs
+      .send(
+        "service_3fxc7y9",
+        "template_wpxrjqa",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "FsqDsO1tntwVC3nxI"
+      )
+      .then(() => {
+        alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.error("Error al enviar:", error);
+        alert("Hubo un error al enviar el mensaje.");
+      });
   };
+
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -499,6 +518,7 @@ const Index = () => {
                 rotate: 5,
                 boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
               }}
+              onClick={() => window.open("https://maps.app.goo.gl/prd7P4Uis43pD2JK9", "_blank")}
               className="bg-secondary rounded-2xl p-6 text-center shadow-lg cursor-pointer"
             >
               <motion.div
@@ -599,8 +619,39 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Reviews de google fotos */}
+      <section id="reviews" className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-4">
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={scaleIn}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2 
+              className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-cyan-500 mb-4"
+            >
+              Reviews
+            </motion.h2>
+          </motion.div>
+
+          {/* Elfsight widget */}
+          <div className="max-w-6xl mx-auto">
+            <div
+              className="elfsight-app-5b274085-0881-4883-ade3-f4c72f873cb0"
+              data-elfsight-app-lazy
+            ></div>
+          </div>
+
+        </div>
+      </section>
+
+
       {/* Schedule Appointment Form */}
-      <section id="agendar-cita" className="py-20 bg-secondary/30">
+      <section id="agendar-cita" className="py-20 ">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -725,6 +776,7 @@ const Index = () => {
                 Licensed daycare in Newmarket, Ontario
               </p>
             </motion.div>
+            {/*Cambiar los links de instagram y facebook de Johana */}
             <div className="flex gap-6">
               <motion.a
                 href="https://www.instagram.com/casamontessori2024?igsh=MXJ4Y3JrYjQ3bGpyNQ%3D%3D&utm_source=qr"
