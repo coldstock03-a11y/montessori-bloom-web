@@ -101,7 +101,7 @@ const Index = () => {
               whileHover={{ scale: 1.05 }}
               className="font-quicksand font-bold text-xl md:text-2xl text-foreground cursor-pointer"
             >
-              Casa Montessori Manrique
+              Home DayCare
             </motion.div>
 
             {/* Menú desktop */}
@@ -248,7 +248,15 @@ const Index = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              Casa Montesorri Manrrinque
+              Casa Montessori Manrique 
+            </motion.p>
+            <motion.p 
+              className="font-nunito text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              Licensed daycare in Newmarket, Ontario
             </motion.p>
             <motion.p 
               className="font-nunito text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-6"
@@ -593,7 +601,7 @@ const Index = () => {
                 Email
               </h3>
               <p className="font-nunito text-foreground/70">
-                manriquecasamontessori@gmail.com
+                johannamanrique@hotmail.com
               </p>
             </motion.div>
 
