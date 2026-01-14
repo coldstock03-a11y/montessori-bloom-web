@@ -240,8 +240,16 @@ const Index = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 80 }}
             >
-              Casa Montessori Manrique
+              Home DayCare
             </motion.h1>
+            <motion.p 
+              className="font-nunito text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              Casa Montesorri Manrrinque
+            </motion.p>
             <motion.p 
               className="font-nunito text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-6"
               initial={{ opacity: 0 }}
@@ -558,7 +566,7 @@ const Index = () => {
                 Phone
               </h3>
               <p className="font-nunito text-foreground/70">
-                (111) 111-1111
+                +1 (647) 887-6594
               </p>
             </motion.div>
 
@@ -585,7 +593,7 @@ const Index = () => {
                 Email
               </h3>
               <p className="font-nunito text-foreground/70">
-                info@casamontessori.com
+                manriquecasamontessori@gmail.com
               </p>
             </motion.div>
 
