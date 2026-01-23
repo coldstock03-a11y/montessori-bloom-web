@@ -786,7 +786,7 @@ const Index = () => {
               whileHover={{ x: 5 }}
             >
               <p className="font-nunito text-lg font-semibold">
-                © 2025 Casa Montessori Manrique
+                © 2026 Casa Montessori Manrique
               </p>
               <p className="font-nunito text-sm opacity-80 mt-1">
                 Licensed daycare in Newmarket, Ontario
@@ -810,7 +810,7 @@ const Index = () => {
                 <Instagram size={28} />
               </motion.a>
               <motion.a
-                href="https://www.facebook.com/profile.php?id=61562247833857"
+                href="https://www.facebook.com/profile.php?id=61562247833857&mibextid=JRoKGi&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-all"
