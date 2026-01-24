@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,12 +18,16 @@ import {
   Facebook
 } from "lucide-react";
 import rainbowClouds from "@/assets/rainbow-clouds.png";
-import imagen1 from "@/assets/imagen1.jpg"; // 👈 importa la imagen
+import imagen1 from "@/assets/imagen1.jpg";
 import emailjs from "emailjs-com";
+import FormLoadingOverlay from "@/components/FormLoadingOverlay";
+import FormSuccessOverlay from "@/components/FormSuccessOverlay";
 
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,9 +41,10 @@ const Index = () => {
       setIsMenuOpen(false);
     }
   }; 
- //Funcion para enviar el formulario de los correos, se debe crear la cuenta de emailjs y cambiar los id
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     emailjs
       .send(
@@ -53,13 +58,22 @@ const Index = () => {
         "FsqDsO1tntwVC3nxI"
       )
       .then(() => {
-        alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
-        setFormData({ name: "", email: "", message: "" });
+        // Mostrar loading por 2.5 segundos antes del mensaje de éxito
+        setTimeout(() => {
+          setIsLoading(false);
+          setShowSuccess(true);
+          setFormData({ name: "", email: "", message: "" });
+        }, 2500);
       })
       .catch((error) => {
         console.error("Error al enviar:", error);
-        alert("Hubo un error al enviar el mensaje.");
+        setIsLoading(false);
+        alert("There was an error sending your message. Please try again.");
       });
+  };
+
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
   };
 
 
@@ -89,7 +103,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      {/* Overlays de loading y éxito */}
+      <AnimatePresence>
+        {isLoading && <FormLoadingOverlay />}
+        {showSuccess && <FormSuccessOverlay onClose={handleCloseSuccess} />}
+      </AnimatePresence>
+
+      <div className="min-h-screen bg-background">
       {/* Header con menú fijo */}
       <header className="fixed top-0 left-0 right-0 bg-sky-pastel backdrop-blur-sm shadow-sm z-50 border-b border-primary/20">
         <nav className="container mx-auto px-4 py-4">
@@ -829,6 +850,7 @@ const Index = () => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 
