@@ -15,7 +15,10 @@ import {
   Menu,
   X,
   Instagram,
-  Facebook
+  Facebook,
+  Star,
+  Quote,
+  MessageCircleHeart
 } from "lucide-react";
 import rainbowClouds from "@/assets/rainbow-clouds.png";
 import imagen1 from "@/assets/imagen1.jpg";
@@ -656,33 +659,133 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Reviews de google fotos */}
-      <section id="reviews" className="py-20 bg-secondary/30">
-        <div className="container mx-auto px-4">
+      {/* What Families Say - Google Reviews */}
+      <section id="reviews" className="py-20 bg-secondary/30 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <motion.div 
+          className="absolute top-10 left-10 opacity-20"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
+          <Star className="text-salmon-pastel" size={60} />
+        </motion.div>
+        <motion.div 
+          className="absolute bottom-10 right-10 opacity-20"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        >
+          <Star className="text-sky-pastel" size={80} />
+        </motion.div>
+        <motion.div 
+          className="absolute top-1/2 right-20 opacity-10"
+          animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Quote className="text-salmon-pastel" size={100} />
+        </motion.div>
+        <motion.div 
+          className="absolute top-20 left-1/4 opacity-10"
+          animate={{ y: [0, 15, 0], rotate: [0, 10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <MessageCircleHeart className="text-sky-pastel" size={70} />
+        </motion.div>
 
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={scaleIn}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
+            {/* Animated stars above title */}
+            <motion.div 
+              className="flex justify-center gap-2 mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    rotate: [0, 15, -15, 0]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    delay: i * 0.2,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Star 
+                    className="text-yellow-400 fill-yellow-400" 
+                    size={28} 
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+
             <motion.h2 
               className="font-quicksand font-bold text-3xl md:text-4xl lg:text-5xl text-cyan-500 mb-4"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              Reviews
+              What Families Say
             </motion.h2>
+            <motion.p 
+              className="font-nunito text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              Real stories from our wonderful families 💕
+            </motion.p>
           </motion.div>
 
-          {/* Elfsight widget */}
-          <div className="max-w-6xl mx-auto">
-            <div
-              className="elfsight-app-5b274085-0881-4883-ade3-f4c72f873cb0"
-              data-elfsight-app-lazy
-            ></div>
-          </div>
+          {/* Elfsight Google Reviews Widget */}
+          <motion.div 
+            className="max-w-6xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.div
+              className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-xl"
+              whileHover={{ 
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)"
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              <div
+                className="elfsight-app-913151e1-d9ef-4fe8-bb34-f7639cfd0eba"
+                data-elfsight-app-lazy
+              ></div>
+            </motion.div>
+          </motion.div>
 
+          {/* Call to action below reviews */}
+          <motion.div 
+            className="text-center mt-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            <motion.p 
+              className="font-nunito text-foreground/60 text-sm md:text-base"
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              ⭐ Join our happy families today! ⭐
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
